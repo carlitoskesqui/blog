@@ -5,7 +5,13 @@
 </head>
 
 <body>
-The content of the document......
+ <h1> Hola {{usuario.nombre}}</h1>
+ 
+ 	<ul>
+ 		{% for p in post %}
+ 		<li>{{p.nombre}} - {{p.cuerpo}}</li>
+ 		{% endfor %}
+ 	</ul>
 </body>
 
 </html>
