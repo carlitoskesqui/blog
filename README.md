@@ -1,2 +1,2 @@
 # blog
-Blog para Informatorio
+Blog para Informatorios
