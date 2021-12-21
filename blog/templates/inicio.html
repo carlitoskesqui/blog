@@ -1,20 +1,20 @@
 {% extends "base/base.html" %}
 
-{% block contenido %}
-                    {% for p in post %}
-                    <div class="row d-flex justify-content-center align-items-center">
-                        <div class="col-lg-6">
-                            <!-- Blog post-->
-                            <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                                <div class="card-body">
-                                    <div class="small text-muted">{{p.fecha_creacion}}</div>
-                                    <h2 class="card-title h4">{{p.titulo}}</h2>
-                                    <p class="card-text">{{p.cuerpo}}</p>
-                                    <a class="btn btn-primary" href="{% url 'post:detalle' %}">Leer Mas →</a>
+    {% block contenido %}                    
+                        <div class="row d-flex justify-content-center align-items-center">
+                            {% for p in post %}
+                            <div class="col-lg-6">
+                                <!-- Blog post-->
+                                <div class="card mb-4">
+                                    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                    <div class="card-body">
+                                        <div class="small text-muted">{{p.fecha_creacion}}</div>
+                                        <h2 class="card-title h4">{{p.titulo}}</h2>
+                                        <p class="card-text">{{p.cuerpo}}</p>
+                                        <a class="btn btn-primary" href="{% url 'post:detalle' %}">Leer Mas →</a>
+                                    </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
-                    </div>
-                    {% endfor %}
-                    {% endblock contenido %}
+    {% endblock contenido %}

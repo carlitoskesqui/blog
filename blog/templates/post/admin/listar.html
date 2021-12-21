@@ -1,0 +1,36 @@
+{% extends "base/base.html" %}
+{% block contenido %}
+
+{% if user.is_authenticated %}
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Cuerpo</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for p in post %}
+  		<tr>
+	  		<td scope="row">{{p.id}}</td>
+	  		<td>{{p.titulo}}</td>
+	  		<td>{{p.cuerpo}}</td>
+	  		<td>{{p.fecha_creacion}}</td>
+	  		<td></td>
+  		<tr>
+  	{% endfor %}
+  </tbody>
+</table>
+
+                  
+{% else %}
+	<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a></li>
+{% endif %}
+
+{% endblock contenido%}
+
+
