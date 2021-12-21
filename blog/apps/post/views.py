@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+def detalle(request):	
+	context = {
+		#"post": Post.objects.all(),
+		#"secretos": Secretos.objects.all()
+	}
+	return render(request, "post/detalle.html", context)
