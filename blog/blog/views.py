@@ -3,15 +3,24 @@ from apps.post.models import Post
 
 def inicio(request):	
 	post = Post.objects.all()
-
 	usuario = {
 		"nombre": "Carlos",
 		"apellido": "Kesqui"
 	}
-
 	context = {
 		"usuario": usuario,
 		"post": post
 	}
-
 	return render(request, "inicio.html", context)
+
+def login(request):	
+	post = Post.objects.all()
+	usuario = {
+		"nombre": "Carlos",
+		"apellido": "Kesqui"
+	}
+	context = {
+		"usuario": usuario,
+		"post": post
+	}
+	return render(request, "login.html", context)
