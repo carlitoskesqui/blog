@@ -37,7 +37,7 @@
             <div class="container">
                 <div class="text-center my-5">
                         {% if user.is_authenticated %}
-                        <h1 class="fw-bolder">Bienvenido al Blog {{user.get_full_name}}!</h1>
+                        <h1 class="fw-bolder">Bienvenido al Blog {{user}}!</h1>
                         {% else %}
                         <h1 class="fw-bolder">Bienvenido al Blog!</h1>
                         {% endif %}
@@ -69,28 +69,27 @@
                     </div>
                     {% endfor %}
 
+                    
                     {% if user.is_authenticated %}
-                        {% for p in post %}
+                    {% for s in secretos %}
                     <div class="row d-flex justify-content-center align-items-center">
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">{{p.fecha_creacion}}</div>
-                                    <h2 class="card-title h4">{{p.titulo}}</h2>
-                                    <p class="card-text">{{p.cuerpo}}</p>
+                                    <div class="small text-muted">{{s.fecha_creacion_s}}</div>
+                                    <h2 class="card-title h4">{{s.titulo_s}}</h2>
+                                    <p class="card-text">{{s.cuerpo_s}}</p>
                                     <a class="btn btn-primary" href="#!">Leer Mas →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
-                        {% else %}                        
-                        {% endif %}
-
-
-
+                    {% else %}
+                    {% endif %}
+                    
                     <!-- Pagination-->
                     <nav aria-label="Pagination">
                         <hr class="my-0" />
@@ -141,8 +140,12 @@
                     </div>
                     <!-- Side widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Side Widget</div>
-                        <div class="card-body">Este blog se hizo en 2 dias</div>
+                        <div class="card-header">Info!!</div>
+                        {% if user.is_authenticated %}
+                        <div class="card-body">Genial, ahora veras cosas solo para vos</div>
+                        {% else %}
+                        <div class="card-body">Si te logueas te mostramos muchas cosas divertidas</div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
