@@ -1,11 +1,8 @@
 from django.shortcuts import render
+from apps.post.models import Post
 
 def inicio(request):	
-	post = [
-		{"nombre": "Post 1", "cuerpo": "Este es el cuerpo 1"},
-		{"nombre": "Post 2", "cuerpo": "Este es el cuerpo 2"},
-		
-	]
+	post = Post.objects.all()
 
 	usuario = {
 		"nombre": "Carlos",
