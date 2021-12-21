@@ -1,6 +1,6 @@
 from django.db import models
 
-class Post(models.Model):
+class Secretos(models.Model):
 	titulo = models.CharField(max_length=250)
 	cuerpo = models.CharField(max_length=250)
 	fecha_creacion = models.CharField(max_length=30)
@@ -8,4 +8,4 @@ class Post(models.Model):
 	#foto = models.ImageField()
 
 	class Meta:
-		db_table="post"
+		db_table="secretos"
