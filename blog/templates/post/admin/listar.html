@@ -28,9 +28,9 @@
 	  		<td>{{p.cuerpo}}</td>
 	  		<td>{{p.fecha_creacion}}</td>
 	  		<td>
-	  			<a href="" class="btn btn-primary">Ver</a>
+	  			<a href="{% url 'post:admin_ver' p.id %}" class="btn btn-primary">Ver</a>
 	  			<a href="{% url 'post:admin_editar' p.id %}" class="btn btn-success">Editar</a>
-	  			<a href="" class="btn btn-danger">Eliminar</a>
+	  			<a href="{% url 'post:admin_eliminar' p.id %}" class="btn btn-danger">Eliminar</a>
 	  		</td>
   		<tr>
   	{% endfor %}

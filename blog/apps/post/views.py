@@ -1,5 +1,5 @@
 from django.shortcuts 			import render
-from django.views.generic 		import ListView, CreateView
+from django.views.generic 		import ListView, CreateView, DeleteView, DetailView
 from django.views.generic.edit 	import UpdateView
 from .models 					import Post
 from .forms 					import PostForm
@@ -31,6 +31,23 @@ class EditarPost(UpdateView):
 	template_name = "post/admin/editar.html"
 	model = Post
 	form_class = PostForm
+
+	def get_success_url(self, **kwargs):
+		return reverse_lazy("post:admin_listar")
+
+
+class EliminarPost(DeleteView):
+	template_name = "post/admin/eliminar.html"
+	model = Post
+
+	def get_success_url(self, **kwargs):
+		return reverse_lazy("post:admin_listar")
+
+
+
+class VerPost(DetailView):
+	template_name = "post/admin/ver.html"
+	model = Post
 
 	def get_success_url(self, **kwargs):
 		return reverse_lazy("post:admin_listar")

@@ -1,15 +1,15 @@
-
 {% extends "base/base.html" %}
 {% block contenido %}
 
 {% if user.is_authenticated %}
 
-			<form method="POST" enctype='multipart/form-data'>{% csrf_token %}
+			<form method="POST">{% csrf_token %}
 				{{form.as_p}}
 
 				<div class="row">
 					<div class="col">
-						<button type="submit" class="btn btn-success mb-2">Crear</button>
+						<h1>Seguro desea borrar el archivo</h1>
+						<button type="submit" class="btn btn-success mb-2">Borrar</button>
 						<a href="{% url 'post:admin_listar' %}" class="btn btn-danger mb-2">Cancelar</a>
 					</div>
 				</div>
@@ -20,5 +20,3 @@
 {% endif %}
 
 {% endblock contenido%}
-
-
