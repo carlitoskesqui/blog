@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{% block contenido %}
+
+{% if user.is_authenticated %}
+
+			<form method="POST">{% csrf_token %}
+				{{form.as_p}}
+
+				<div class="row">
+					<div class="col">
+						<h1>Seguro desea borrar el archivo</h1>
+						<button type="submit" class="btn btn-success mb-2">Borrar</button>
+						<a href="{% url 'post:admin_listar' %}" class="btn btn-danger mb-2">Cancelar</a>
+					</div>
+				</div>
+			</form>
+                  
+{% else %}
+	<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a></li>
+{% endif %}
+
+{% endblock contenido%}
