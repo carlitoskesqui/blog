@@ -1,8 +1,9 @@
-from django.shortcuts 		import render
-from django.views.generic 	import ListView, CreateView
-from .models 				import Post
-from .forms 				import PostForm
-from django.urls 			import reverse_lazy
+from django.shortcuts 			import render
+from django.views.generic 		import ListView, CreateView
+from django.views.generic.edit 	import UpdateView
+from .models 					import Post
+from .forms 					import PostForm
+from django.urls 				import reverse_lazy
 
 def detalle(request):	
 	context = {}
@@ -12,15 +13,22 @@ class ListarAdmin(ListView):
 	template_name="post/admin/listar.html"
 	model = Post
 	context_object_name="post"
-
-	"""
-	Filtrar lista:
+	
 	def get_queryset(self):
-		return Post.objects.filter(id=2)
-	"""
+		return Post.objects.all().order_by("fecha_creacion")
+	
 
 class NuevoPost(CreateView):
 	template_name = "post/admin/nuevo.html"
+	model = Post
+	form_class = PostForm
+
+	def get_success_url(self, **kwargs):
+		return reverse_lazy("post:admin_listar")
+
+
+class EditarPost(UpdateView):
+	template_name = "post/admin/editar.html"
 	model = Post
 	form_class = PostForm
 
