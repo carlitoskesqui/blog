@@ -1,13 +1,15 @@
 {% extends "base/base.html" %}
+
 {% block contenido %}
+
+{% load static %}
+	
 	<div class="container">
-<<<<<<< HEAD
-		
-
-		<img class="card-img-top" src="{{object.thumbnail.url}}">
-
-=======
->>>>>>> b39806bf5075d2899a1134f7f17bad58e9a41498
+	{% if object.imagen %}
+            <img class="card-img-top" src="{{object.imagen.url}}"></img>
+    {% else %}
+        	<img class="card-img-top" src="{% static 'image\default/si.png' %}"></img>
+    {% endif %}
 		<div class="row">
 			<h1>{{object.titulo}}</h1>
 		</div>
@@ -16,3 +18,7 @@
 		</div>
 	</div>
 {% endblock contenido %}
+
+
+
+
