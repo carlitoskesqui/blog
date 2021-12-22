@@ -1,4 +1,5 @@
 {% extends "base/base.html" %}
+{% load static %}
 
     {% block contenido %}                    
                         <div class="row d-flex justify-content-center align-items-center">
@@ -6,7 +7,12 @@
                             <div class="col-lg-6">
                                 <!-- Blog post-->
                                 <div class="card mb-4">
-                                    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                    {% if p.imagen %}
+                                        <img class="card-img-top" src="{{p.imagen.url}}"></img>
+                                    {% else %}
+                                        <img class="card-img-top" src="{% static 'image\default\si.png' %}"></img>
+                                    {% endif %}
+
                                     <div class="card-body">
                                         <div class="small text-muted">{{p.fecha_creacion}}</div>
                                         <h2 class="card-title h4">{{p.titulo}}</h2>

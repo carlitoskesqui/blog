@@ -17,6 +17,8 @@ class Post(models.Model):
 	autor= models.CharField(max_length=100)
 	thumbnail = models.ImageField()
 	categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
+	#categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
+	imagen = models.ImageField(upload_to="post", null=True)
 
 	class Meta:
 		db_table="post"

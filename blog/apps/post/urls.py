@@ -1,5 +1,5 @@
-from django.urls    import path
-from .              import views
+from django.urls                import path
+from .                          import views
 
 app_name = "post"
 
@@ -12,4 +12,4 @@ urlpatterns = [
     path('admin/editar/<int:pk>/', views.EditarPost.as_view(), name='admin_editar'),
     path('admin/eliminar/<int:pk>/', views.EliminarPost.as_view(), name='admin_eliminar'),
     path('admin/ver/<int:pk>/', views.VerPost.as_view(), name='admin_ver'),
-]
+] 

@@ -6,12 +6,11 @@ from .models import Post
 class PostForm(forms.ModelForm):
 	titulo = forms.CharField(label="Título", widget=forms.TextInput(attrs={"class":"form-control"}))
 	cuerpo = forms.CharField(label="Contenido", widget=forms.Textarea(attrs={'class':'form-control', 'rows': 5, 'cols': 100}))
-	autor = forms.CharField(label="Autor", widget=forms.TextInput(attrs={"class":"form-control"}))
-	thumbnail=forms.ImageField(label="Subir Imagen")
+	#categorias
+	imagen=forms.ImageField(label="Subir Imagen")
 	class Meta:
 		model = Post
-		fields = ('__all__')
-
+		fields = ["titulo", "cuerpo", "imagen"]
 
 
 
