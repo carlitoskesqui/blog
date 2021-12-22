@@ -26,6 +26,41 @@
         <p><a href="https://capacitaciones.chaco.gob.ar/my/">Blog creado para examen Informatorio</a></p>
       </div>
 
+
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+      {% if form.errors %}
+        {% for field in form %}
+          {% for error in field.errors %}
+                        <script>
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                text: "{{field.label}}",
+                                showConfirmButton: true,
+                                timer: 5000
+                            })
+                        </script>
+                        {% endfor %}
+                      {% endfor %}
+
+                      {% for error in form.non_field_errors %}
+                        <script>
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                text: "{{error}}",
+                                showConfirmButton: true,
+                                timer: 5000
+                            })
+                        </script>
+                    {% endfor %}
+          {% endif %}
+
+                       
+
+
+
+
       <div class="form-label-group">
         <input type="text" id="inputEmail" class="form-control" placeholder="Correo Electronico" name="username" required autofocus>
         <label for="inputEmail">Nombre de Usuario</label>
