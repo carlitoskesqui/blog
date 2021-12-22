@@ -4,7 +4,7 @@
 {% if user.is_authenticated %}
 <div class="row">
 	<div class="col">
-		<button type="button" class="btn btn-success">Nuevo Post</button>
+		<a href="{% url 'post:admin_nuevo' %}" type="button" class="btn btn-success">Nuevo Post</a>
 	</div>
 </div>
 
