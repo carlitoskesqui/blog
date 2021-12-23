@@ -14,7 +14,8 @@ urlpatterns = [
     path('logout/', auth_views.logout_then_login, name='logout'),
 
     #includes
-    path('post/', include('apps.post.urls'))
+    path('post/', include('apps.post.urls')),
+    path('usuarios/', include('apps.usuarios.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
