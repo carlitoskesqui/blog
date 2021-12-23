@@ -9,13 +9,24 @@ def detalle(request):
 	context = {}
 	return render(request, "post/detalle.html", context)
 
+	
+
 class ListarAdmin(ListView):
 	template_name="post/admin/listar.html"
 	model = Post
 	context_object_name="post"
+
+	def get_context_data(self, **kwargs):
+		context = super(ListarAdmin, self).get_context_data(**kwargs)
+		context["buscado"] = self.request.GET.get("nombre_post", "")
+		return context
 	
 	def get_queryset(self):
-		return Post.objects.all().order_by("fecha_creacion")
+		busqueda_nombre = self.request.GET.get("nombre_post", "")
+		query = Post.objects.all().order_by("titulo")
+		if len(busqueda_nombre) > 0:
+			query = query.filter(titulo__icontains=busqueda_nombre)
+		return query
 	
 
 class NuevoPost(CreateView):

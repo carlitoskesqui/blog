@@ -18,7 +18,7 @@
 
 																				{% for c in p.categorias.all %}
 																				<span class="badge rounded-pill bg-primary">{{c.nombre}}</span>
-																				<div class="small text-muted">Creado {{p.fecha_creacion}}</div>
+																				<div class="small text-muted">Creado el {{p.fecha_creacion}}</div>
 																				<h2 class="card-title h4">{{p.titulo}}</h2>
 																				<p class="card-text">{{p.cuerpo}}</p>
 																				<a class="btn btn-primary" href="{% url 'post:detalle' %}">Leer Mas →</a>
