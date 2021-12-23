@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 class Usuarios(AbstractUser):
 	dni= models.IntegerField(null=True, blank=True)
-	#foto = models.ImageField()
+	administrador = models.BooleanField(default=False)
 
 	class Meta:
 		db_table="usuarios"

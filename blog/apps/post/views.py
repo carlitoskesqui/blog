@@ -1,12 +1,13 @@
+from django.contrib.auth.mixins	import LoginRequiredMixin
 from django.shortcuts 			import render
 from django.views.generic 		import ListView, CreateView, DeleteView, DetailView
 from django.views.generic.edit 	import UpdateView
 from .models 					import Post
 from .forms 					import PostForm
 from django.urls 				import reverse_lazy
+from apps.core.mixins			import AdminRM
 
-
-class ListarAdmin(ListView):
+class ListarAdmin(LoginRequiredMixin,  ListView):
 	template_name="post/admin/listar.html"
 	model = Post
 	context_object_name="post"
@@ -25,16 +26,17 @@ class ListarAdmin(ListView):
 		return query
 	
 
-class NuevoPost(CreateView):
+class NuevoPost(LoginRequiredMixin,  CreateView):
 	template_name = "post/admin/nuevo.html"
 	model = Post
 	form_class = PostForm
+
 
 	def get_success_url(self, **kwargs):
 		return reverse_lazy("post:admin_listar")
 
 
-class EditarPost(UpdateView):
+class EditarPost(LoginRequiredMixin,  UpdateView):
 	template_name = "post/admin/editar.html"
 	model = Post
 	form_class = PostForm
@@ -43,9 +45,10 @@ class EditarPost(UpdateView):
 		return reverse_lazy("post:admin_listar")
 
 
-class EliminarPost(DeleteView):
+class EliminarPost(LoginRequiredMixin,  DeleteView):
 	template_name = "post/admin/eliminar.html"
 	model = Post
+	
 
 	def get_success_url(self, **kwargs):
 		return reverse_lazy("post:admin_listar")
