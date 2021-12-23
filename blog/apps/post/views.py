@@ -9,12 +9,13 @@ def detalle(request):
 	context = {}
 	return render(request, "post/detalle.html", context)
 
-	
+
 
 class ListarAdmin(ListView):
 	template_name="post/admin/listar.html"
 	model = Post
 	context_object_name="post"
+	paginate_by = 6
 
 	def get_context_data(self, **kwargs):
 		context = super(ListarAdmin, self).get_context_data(**kwargs)
