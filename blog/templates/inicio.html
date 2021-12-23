@@ -2,37 +2,37 @@
 {% load static %}
 {% load humanize %}
 
-		{% block contenido %}                    
-												<div class="row d-flex justify-content-center align-items-center">
-														{% for p in post %}
-														<div class="col-lg-6">
-																<!-- Blog post-->
-																<div class="card mb-4">
-																		{% if p.imagen %}
-																				<img class="card-img-top" src="{{p.imagen.url}}"></img>
-																		{% else %}
-																				<img class="card-img-top" src="{% static 'image\default\si.png' %}"></img>
-																		{% endif %}
+{% block contenido %}                    
+	<div class="row d-flex justify-content-center align-items-center">
+			{% for p in post %}
+			<div class="col-lg-6">
+					<!-- Blog post-->
+					<div class="card mb-4">
+							{% if p.imagen %}
+									<img class="card-img-top" src="{{p.imagen.url}}"></img>
+							{% else %}
+									<img class="card-img-top" src="{% static 'image\default\si.png' %}"></img>
+							{% endif %}
 
-																		<div class="card-body">
+							<div class="card-body">
 
-																				{% for c in p.categorias.all %}
-																				<span class="badge rounded-pill bg-primary">{{c.nombre}}</span>
-																				<div class="small text-muted">Creado el {{p.fecha_creacion}}</div>
-																				<h2 class="card-title h4">{{p.titulo}}</h2>
-																				<p class="card-text">{{p.cuerpo}}</p>
-																				<a class="btn btn-primary" href="{% url 'post:detalle' %}">Leer Mas →</a>
-																		</div>
-																</div>
-														</div>
-														{% endfor %}
-														{% endfor %}
-												</div>
-		{% endblock contenido %}
+									{% for c in p.categorias.all %}
+									<span class="badge rounded-pill bg-primary">{{c.nombre}}</span>
+									<div class="small text-muted">Creado el {{p.fecha_creacion}}</div>
+									<h2 class="card-title h4">{{p.titulo}}</h2>
+									<p class="card-text">{{p.cuerpo}}</p>
+									<a class="btn btn-primary" href="{% url 'post:detalle' p.id%}">Leer Mas →</a>
+							</div>
+					</div>
+			</div>
+			{% endfor %}
+			{% endfor %}
+	</div>
+{% endblock contenido %}
 
 
 {% if p.imagen %}
-																				<img class="card-img-top" src="{{p.imagen.url}}"></img>
-																		{% else %}
-																				<img class="card-img-top" src="{% static 'image\default\si.png' %}"></img>
-																		{% endif %}
+									<img class="card-img-top" src="{{p.imagen.url}}"></img>
+							{% else %}
+									<img class="card-img-top" src="{% static 'image\default\si.png' %}"></img>
+							{% endif %}
